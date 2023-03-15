@@ -1,0 +1,16 @@
+.navbar-link {
+    border: 2px solid;
+}
+.card{
+    margin: .5rem !important;
+    width: 18rem;
+}
+#bannercolor{
+color: #d80367;
+}
+.btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
+    background-color: #d80367 !important;
+    color: white;
+    border: 2px solid;
+
+}
