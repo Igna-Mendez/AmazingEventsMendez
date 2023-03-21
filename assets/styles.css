@@ -14,3 +14,28 @@ color: #d80367;
     border: 2px solid;
 
 }
+.textinput:hover{
+    border:1rem;
+}
+.textinput {
+    max-width: 12rem;
+    
+}
+.textinput:focus{
+    box-shadow: 0 0 0 .25rem rgba(216, 3, 103, 1) !important;
+}
+.nav-link, .nav-link-active{
+    height: 4rem !important;
+    text-align: center !important;
+    font-family: Helvetica, sans-serif !important;
+}
+/* .form-group{
+    box-shadow: 0 0 0 .25rem rgba(216, 3, 103, 1) !important;
+} */
+.form-control:focus{
+    box-shadow: 0 0 0 .25rem rgba(216, 3, 103, 1) !important;
+}
+.contactForm{
+ border: 2px solid;
+ border-color: #d80367;
+}

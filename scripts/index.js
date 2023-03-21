@@ -1,10 +1,7 @@
 import { data } from "./data.js";
 
-/* 
-const pointer = document.getElementById("contHome");
- renderCard(data.events, pointer); */
 
-const contenedor = document.getElementById('contHome')
+/* const contenedor = document.getElementById('contHome') */
 const contenedorChecks = document.getElementById('checkContainer')
 const input = document.querySelector('input')
 
@@ -14,17 +11,53 @@ input.addEventListener('input',doubleFilter)
 
 contenedorChecks.addEventListener('change',doubleFilter)
 
-pintarTarjetas(data.events)
-crearCheckboxes(data.events)
+/* renderCards(data.events) */
+createChecks(data.events)
 
 
-function doubleFilter(){
-    let arrayFiltrado1 = filtrarPorTexto(data, input.value)
-    let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
-    pintarTarjetas(arrayFiltrado2)
+let events
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+.then((res)=>res.json())
+.then((data)=>{
+    console.log(data)
+    events = data.results
+    renderCards(events)
+})
+.catch((error)=> console.log(error))
+
+
+function renderCards(arrayData){
+      const cards = arrayData.reduce( (acc, act) => {
+        return acc + `<div class="card border-2 border-dark" id="${act._id}">
+        <img src="${act.image}" class="card-img-top" style="height:11rem" alt="${act.name}"> 
+       <div class="card-body">
+                <h5 class="card-title">${act.name}</h5>
+                <p class="card-text" style="height:5rem">${act.description}</p>
+               <div class="align-content-center align-items-center">
+                <div class=" justify-content-center row card-text d-flex">
+                        Price: $ ${act.price}
+                </div>
+                <a href="./details.html?id=${act._id}" class="d-flex row justify-content-center btn btn-light">Details</a>
+                
+                </div>
+                </div>
+            </div>
+        `
+    }, "" )
+
+    const contenedor = document.getElementById( 'contHome' )
+
+    contenedor.innerHTML = cards
+
 }
 
-function crearCheckboxes(arrayInfo){
+function doubleFilter(){
+    let filtered1 = filterByText(data.events, input.value)
+    let filtered2 = filterByCategory(filtered1)
+    renderCards(filtered2)
+}
+
+function createChecks(arrayInfo){
     let checks = ''
     let categories = arrayInfo.map(event => event.category)
     let events = new Set(categories.sort((a,b)=>{
@@ -46,7 +79,7 @@ function crearCheckboxes(arrayInfo){
     contenedorChecks.innerHTML = checks
 }
 
-function pintarTarjetas(arrayDatos) {
+/* function renderCards(arrayDatos) {
     if(arrayDatos.length == 0){
         contenedor.innerHTML = "<h2 class='display-1 fw-bolder'>No hay coincidencias!</h2>"
         return
@@ -62,21 +95,21 @@ function pintarTarjetas(arrayDatos) {
                 <div class=" justify-content-center row card-text d-flex">
                         Price: $ ${event.price}
                 </div>
-                <a href="./details.html" class="d-flex row justify-content-center btn btn-light">Details</a>
+                <a href="./details.html?id=${event._id}" class="d-flex row justify-content-center btn btn-light">Details</a>
                 
                 </div>
                 </div>
             </div>`
     })
     contenedor.innerHTML = tarjetas
-}
+} */
 
-function filtrarPorTexto(arrayDatos, texto){
-    let arrayFiltrado = arrayDatos.filter(event => event.name.toLowerCase().includes(texto.toLowerCase()))
+function filterByText(arrayDatos, text){
+    let arrayFiltrado = arrayDatos.filter(event => event.name.toLowerCase().includes(text.toLowerCase()))
     return arrayFiltrado
 }
 
-function filtrarPorCategoria(arrayInfo){
+function filterByCategory(arrayInfo){
     let checkboxes = document.querySelectorAll("input[type='checkbox']")
     console.log(checkboxes);
     let arrayChecks = Array.from(checkboxes)
@@ -95,28 +128,3 @@ function filtrarPorCategoria(arrayInfo){
 
 
 
-/* 
-function renderCard(eventsArray, pointer){
-    let cardsData = ''
-    for(const event of eventsArray){
-        cardsData+=`<div class="card border-2 border-dark" id="${event._id}">
-        <img src="${event.image}" class="card-img-top" style="height:11rem" alt="${event.name}"> 
-       <div class="card-body">
-                <h5 class="card-title">${event.name}</h5>
-                <p class="card-text" style="height:5rem">${event.description}</p>
-               <div class="align-content-center align-items-center">
-                <div class=" justify-content-center row card-text d-flex">
-                        Price: $ ${event.price}
-                </div>
-                <a href="./details.html" class="d-flex row justify-content-center btn btn-light">Details</a>
-                
-                </div>
-                </div>
-            </div>`
-     }
-          pointer.innerHTML = cardsData;
-     
-        
-    }
-
- */

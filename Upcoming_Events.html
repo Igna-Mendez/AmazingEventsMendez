@@ -34,61 +34,33 @@
             </nav>
 
             <div class="container bg-dark d-flex justify-content-between">
-                <a class="fs-1 text-decoration-none" id="bannercolor" href="contact.html">&lt;</a>
+                <a class="fs-1 text-decoration-none" id="bannercolor" href="./index.html">&lt;</a>
                 <h1 class="m-1" id="bannercolor">Upcoming Events</h1>
-                <a class="fs-1 text-decoration-none" id="bannercolor" href="upcoming_events.html">&gt;</a>
+                <a class="fs-1 text-decoration-none" id="bannercolor" href="./past_events.html">&gt;</a>
             </div>
 
         </div>
     </header>
 
     <!-- Checkbox y búsqueda -->
-    <div class="container d-flex flex-wrap mt-2 ml-6">
 
-        <div class="d-flex flex-wrap justify-content-start py-md-3 px-md-4 col-9">
-
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="check1" value="option1">
-                <label class="form-check-label" for="check1">Category</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="check2" value="option2">
-                <label class="form-check-label" for="check2">Category</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="check3" value="option3">
-                <label class="form-check-label" for="check3">Category</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="check4" value="option4">
-                <label class="form-check-label" for="check4">Category</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="check5" value="option5">
-                <label class="form-check-label" for="check5">Category</label>
-            </div>
-
-        </div>
-
-        <nav class="navbar">
-
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-
-        </nav>
+        <div class="container d-flex flex-wrap mt-2 ml-6">
+            <input type="text" class="textinput d-flex m-2 form-control col-2 text-center" placeholder="Search">
+            <div id="checkContainer" class="container d-flex flex-wrap col-10 align-items-center gap-2"></div>
+        <div id="upcomingCont" class="p-3 d-flex flex-wrap justify-content-center gap-3"></div>
     </div>
+
+    
 
     <!-- Tarjetas img-->
     <div class=" container d-flex flex-wrap">
-        <div class="d-flex flex-wrap justify-content-center" id="contUpcoming">
+        <div class="d-flex flex-wrap justify-content-center" id="upcomingCont">
            
         </div>
 
     </div>
 
-    <footer class="d-flex container border-top">
+    <footer class="d-flex  border-top">
         <div class="d-flex align-items-center col-8">
             <a class="text-muted m-2" href="https://www.instagram.com/">
                 <i class="bi bi-instagram "></i>
